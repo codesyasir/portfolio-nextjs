@@ -1,6 +1,16 @@
 "use client";
 import Link from "next/link";
-import { T } from "@/lib/config";
+import { T, STRAPI_URL } from "@/lib/config";
+
+function getImageUrl(img) {
+  if (!img) return null;
+  // Strapi v5: img.url directly
+  if (typeof img === "string") return img.startsWith("http") ? img : STRAPI_URL + img;
+  // Strapi v4/v5 object
+  const url = img.url || img?.data?.attributes?.url || null;
+  if (!url) return null;
+  return url.startsWith("http") ? url : STRAPI_URL + url;
+}
 
 export function SectionHeader({ label, title, action, actionHref }) {
   return (
@@ -22,20 +32,27 @@ export function SectionHeader({ label, title, action, actionHref }) {
 
 export function ProjectCard({ project, index = 0 }) {
   const tags = Array.isArray(project.tags) ? project.tags : [];
+  const imageUrl = getImageUrl(project.image || project.screenshot || project.cover);
+
   return (
-    <a href={project.link || "#"} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ background: T.s2, border: `1px solid ${T.border}`, borderRadius: 12, padding: 28, display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 220, animation: `fadeUp 0.6s ${index * 0.1}s both`, position: "relative", overflow: "hidden" }}>
-      {project.featured && (
-        <div style={{ position: "absolute", top: 16, right: 16 }}>
-          <span className="mono" style={{ fontSize: 10, padding: "3px 8px", borderRadius: 4, background: T.accentSoft, color: T.accent, border: `1px solid ${T.accentMid}` }}>FEATURED</span>
+    <a href={project.link || "#"} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ background: T.s2, border: `1px solid ${T.border}`, borderRadius: 12, display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 220, animation: `fadeUp 0.6s ${index * 0.1}s both`, position: "relative", overflow: "hidden" }}>
+      {imageUrl && (
+        <div style={{ width: "100%", height: 180, overflow: "hidden" }}>
+          <img src={imageUrl} alt={project.title} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s" }} onMouseEnter={e => e.target.style.transform = "scale(1.05)"} onMouseLeave={e => e.target.style.transform = "scale(1)"} />
         </div>
       )}
-      <div>
+      <div style={{ padding: 28 }}>
+        {project.featured && (
+          <div style={{ position: "absolute", top: imageUrl ? 12 : 16, right: 16 }}>
+            <span className="mono" style={{ fontSize: 10, padding: "3px 8px", borderRadius: 4, background: T.accentSoft, color: T.accent, border: `1px solid ${T.accentMid}` }}>FEATURED</span>
+          </div>
+        )}
         <div className="mono" style={{ fontSize: 11, color: T.gray, marginBottom: 12, letterSpacing: 1 }}>PROJECT</div>
         <h3 style={{ fontSize: 22, fontWeight: 700, letterSpacing: -0.3, marginBottom: 10 }}>{project.title}</h3>
         <p style={{ fontSize: 14, color: T.gray, lineHeight: 1.7 }}>{project.desc || project.description}</p>
-      </div>
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 20 }}>
-        {tags.map((t, j) => <span key={`pt-${index}-${j}`} className="tag">{t}</span>)}
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 20 }}>
+          {tags.map((t, j) => <span key={`pt-${index}-${j}`} className="tag">{t}</span>)}
+        </div>
       </div>
     </a>
   );
@@ -58,3 +75,6 @@ export function BlogCard({ post, index = 0 }) {
     </Link>
   );
 }
+
+// Export so other files can use it
+export { getImageUrl };
