@@ -37,7 +37,7 @@ export function ProjectCard({ project, index = 0 }) {
   return (
     <a href={project.link || "#"} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ background: T.s2, border: `1px solid ${T.border}`, borderRadius: 12, display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 220, animation: `fadeUp 0.6s ${index * 0.1}s both`, position: "relative", overflow: "hidden" }}>
       {imageUrl && (
-        <div style={{ width: "100%", height: 180, overflow: "hidden" }}>
+        <div style={{ width: "100%", height: 180, overflow: "hidden", borderRadius: "12px 12px 0 0" }}>
           <img src={imageUrl} alt={project.title} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s" }} onMouseEnter={e => e.target.style.transform = "scale(1.05)"} onMouseLeave={e => e.target.style.transform = "scale(1)"} />
         </div>
       )}

@@ -49,7 +49,7 @@ export default function CreationsContent({ plugins }) {
               </div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 28px", borderTop: `1px solid ${T.border}` }}>
                 <span className="mono" style={{ fontSize: 12, color: T.gray }}>↓ {item.downloads || 0} downloads</span>
-                <a href={downloadUrl} target="_blank" rel="noopener noreferrer" download className="btn-primary" style={{ padding: "8px 20px", fontSize: 12 }}>Download →</a>
+                <a href={downloadUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); const link = document.createElement('a'); link.href = downloadUrl; link.download = item.title || 'download'; document.body.appendChild(link); link.click(); document.body.removeChild(link); }} className="btn-primary" style={{ padding: "8px 20px", fontSize: 12, cursor: "pointer" }}>Download →</a>
               </div>
             </div>
           );
