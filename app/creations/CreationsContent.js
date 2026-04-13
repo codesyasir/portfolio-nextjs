@@ -8,7 +8,12 @@ function getFileUrl(file) {
   if (typeof file === "string") return file.startsWith("http") ? file : STRAPI_URL + file;
   const url = file.url || file?.data?.attributes?.url || null;
   if (!url) return null;
-  return url.startsWith("http") ? url : STRAPI_URL + url;
+  let fullUrl = url.startsWith("http") ? url : STRAPI_URL + url;
+  // Force Cloudinary to download instead of display
+  if (fullUrl.includes("res.cloudinary.com")) {
+    fullUrl = fullUrl.replace("/upload/", "/upload/fl_attachment/");
+  }
+  return fullUrl;
 }
 
 export default function CreationsContent({ plugins }) {
