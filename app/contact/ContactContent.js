@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { SectionHeader } from "@/components/Cards";
-import { T, SITE, STRAPI_URL } from "@/lib/config";
+import { T, SITE } from "@/lib/config";
 
 export default function ContactContent({ contact }) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -11,14 +11,28 @@ export default function ContactContent({ contact }) {
     if (!form.name || !form.email || !form.message) { setStatus("fill"); return; }
     setStatus("sending");
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          access_key: "a05fc258-490b-4ee2-9afa-0c3a7775bd03",
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          subject: "New message from " + form.name + " — YasirCodes Portfolio",
+          from_name: "YasirCodes Portfolio",
+        }),
       });
-      setStatus("sent");
-      setForm({ name: "", email: "", message: "" });
-    } catch { setStatus("error"); }
+      const data = await res.json();
+      if (data.success) {
+        setStatus("sent");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
     setTimeout(() => setStatus(""), 4000);
   };
 
