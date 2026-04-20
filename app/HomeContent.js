@@ -36,7 +36,7 @@ export default function HomeContent({ hero, projects, blogs }) {
               </button></a>
             </div>
             <div className="hero-stats" style={{ display: "flex", gap: 40, marginTop: 60, flexWrap: "wrap" }}>
-              {[{ val: `${projects.length}+`, label: "Projects" }, { val: `${blogs.length}+`, label: "Articles" }, { val: "150+", label: "Plugins" }].map((s, i) => (
+              {[{ val: "150+", label: "Projects" }, { val: `${blogs.length}+`, label: "Articles" }, { val: "5+", label: "Plugins" }].map((s, i) => (
                 <div key={`stat-${i}`} style={{ animation: `fadeUp 0.8s ${0.3 + i * 0.15}s both` }}>
                   <div style={{ fontSize: 32, fontWeight: 800, letterSpacing: -1 }}>{s.val}</div>
                   <div className="mono" style={{ fontSize: 11, color: T.gray, marginTop: 2 }}>{s.label}</div>
