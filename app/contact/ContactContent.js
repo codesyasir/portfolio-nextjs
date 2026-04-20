@@ -58,8 +58,6 @@ export default function ContactContent({ contact }) {
           {[
             { label: "Email", value: contact.email, url: `mailto:${contact.email}` },
             { label: "GitHub", value: "@codesyasir", url: contact.github },
-            { label: "LinkedIn", value: SITE.name, url: contact.linkedin },
-            { label: "Twitter", value: "@yasirmalik", url: contact.twitter },
           ].map((c, i) => (
             <a key={`cl-${i}`} href={c.url} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ padding: "14px 20px", background: T.s2, border: `1px solid ${T.border}`, borderRadius: 10, flex: "1 1 200px" }}>
               <div className="mono" style={{ fontSize: 10, color: T.gray, marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>{c.label}</div>

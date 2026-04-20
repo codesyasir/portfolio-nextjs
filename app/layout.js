@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://yasircodes.vercel.app"),
   title: {
-    default: "YasirCodes — Full-Stack Developer & Creator",
+    default: "YasirCodes — Developer & Creator",
     template: "%s | YasirCodes",
   },
   description: "Portfolio of Yasir Malik — Full-Stack Developer, plugin creator, theme builder, and writer. Building modern web apps with React, Next.js, Strapi, and Node.js.",
@@ -17,7 +17,7 @@ export const metadata = {
     locale: "en_US",
     url: "/",
     siteName: "YasirCodes",
-    title: "YasirCodes — Full-Stack Developer & Creator",
+    title: "YasirCodes — Developer & Creator",
     description: "Building products, crafting themes, shipping plugins — and writing about all of it.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "YasirCodes Portfolio" }],
   },
