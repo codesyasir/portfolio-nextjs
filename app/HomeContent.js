@@ -9,7 +9,7 @@ export default function HomeContent({ hero, projects, blogs }) {
   useEffect(() => { setTimeout(() => setVis(true), 100); }, []);
 
   const firstName = (hero.name || SITE.name).split(" ")[0];
-  const marqueeText = " DEVELOPER · WEB DEVELOPER · EXPERT · PHP · JAVASCRIPT ";
+  const marqueeText = " DEVELOPER · WEB DEVELOPER · WORDPRESS EXPERT · PHP · JAVASCRIPT ";
 
   return (
     <>
