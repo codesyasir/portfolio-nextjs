@@ -7,7 +7,7 @@ export default function BlogPostContent({ post }) {
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
 
   return (
-    <section style={{ padding: "140px 40px 100px", maxWidth: 860, margin: "0 auto" }} className="mobile-pad">
+    <section style={{ padding: "140px 40px 100px", maxWidth: 900, margin: "0 auto" }} className="mobile-pad">
       <Link href="/blog" className="mono" style={{ fontSize: 13, color: T.accent, display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 32 }}>
         ← Back to blog
       </Link>
