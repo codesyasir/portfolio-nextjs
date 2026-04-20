@@ -25,7 +25,7 @@ export default function AboutContent({ about }) {
             </>
           )}
           <div style={{ display: "flex", gap: 12, marginTop: 32, flexWrap: "wrap" }}>
-            {[{ icon: "⑂", label: "GitHub", url: SITE.github }].map((s, i) => (
+            {[{ icon: "⑂", label: "GitHub", url: SITE.github },{ icon: "⑄", label: "LinkedIn", url: SITE.linkedin }].map((s, i) => (
               <a key={`s-${i}`} href={s.url} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ padding: "10px 20px", border: `1px solid ${T.border}`, borderRadius: 8, fontSize: 13, color: T.gray, display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontSize: 16 }}>{s.icon}</span> {s.label}
               </a>
