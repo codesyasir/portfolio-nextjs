@@ -10,7 +10,7 @@ export default function Image() {
     (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "70px 80px", background: "#08080a", fontFamily: "sans-serif" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ width: 44, height: 44, background: "#c8ff00", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, fontWeight: 900, color: "#08080a" }}>Y</div>
+          <div style={{ width: 44, height: 44, background: "#c8ff00", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, fontWeight: 900, color: "#08080a" }}>YC</div>
           <span style={{ fontSize: 26, fontWeight: 700, color: "#f5f5f7" }}>YasirCodes</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
