@@ -54,6 +54,9 @@ export const metadata = {
   alternates: {
     canonical: "https://yasircodes.online",
   },
+  verification: {
+    google: "1cGfxcMxlUITppEoLQb9iuAZzhzzRRapJYM2747oXac",
+  },
 };
 
 export default function RootLayout({ children }) {
