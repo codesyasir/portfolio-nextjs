@@ -3,32 +3,57 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://yasircodes.vercel.app"),
+  metadataBase: new URL("https://yasircodes.online"),
   title: {
-    default: "YasirCodes — Developer & Creator",
+    default: "YasirCodes — WordPress Developer & Creator",
     template: "%s | YasirCodes",
   },
-  description: "Portfolio of Yasir Malik — Full-Stack Developer, plugin creator, theme builder, and writer. Building modern web apps with React, Next.js, Strapi, and Node.js.",
-  keywords: ["Yasir Malik", "YasirCodes", "full-stack developer", "Next.js", "React", "Strapi", "portfolio", "plugins", "themes", "blog"],
-  authors: [{ name: "Yasir Malik" }],
+  description: "Yasir Malik — WordPress Developer with 4+ years of experience. Specializing in WooCommerce, theme & plugin development, and custom PHP solutions.",
+  keywords: [
+    "Yasir Malik",
+    "YasirCodes",
+    "WordPress Developer",
+    "WooCommerce Developer",
+    "WordPress Developer Pakistan",
+    "WooCommerce customization",
+    "WordPress themes",
+    "WordPress plugins",
+    "PHP developer",
+    "web developer Pakistan",
+    "freelance WordPress developer",
+    "portfolio",
+  ],
+  authors: [{ name: "Yasir Malik", url: "https://yasircodes.online" }],
   creator: "Yasir Malik",
+  publisher: "YasirCodes",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "/",
+    url: "https://yasircodes.online",
     siteName: "YasirCodes",
-    title: "YasirCodes — Developer & Creator",
+    title: "YasirCodes — WordPress Developer & Creator",
     description: "Building products, crafting themes, shipping plugins — and writing about all of it.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "YasirCodes Portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "YasirCodes — Full-Stack Developer & Creator",
+    title: "YasirCodes — WordPress Developer & Creator",
     description: "Building products, crafting themes, shipping plugins — and writing about all of it.",
     creator: "@yasirmalik",
-    images: ["/og-image.png"],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://yasircodes.online",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -46,13 +71,19 @@ export default function RootLayout({ children }) {
               "@type": "Person",
               name: "Yasir Malik",
               alternateName: "YasirCodes",
-              url: process.env.NEXT_PUBLIC_SITE_URL || "https://yasircodes.vercel.app",
-              jobTitle: "Full-Stack Developer",
+              url: "https://yasircodes.online",
+              jobTitle: "WordPress Developer",
+              description: "WordPress Developer with 4+ years of experience specializing in WooCommerce, theme & plugin development.",
               sameAs: [
                 "https://github.com/codesyasir",
-                "https://linkedin.com/in/yasirmalik",
-                "https://twitter.com/yasirmalik",
+                "https://www.linkedin.com/in/yasir-malik-web/",
+                "https://twitter.com/yasircodes",
               ],
+              knowsAbout: ["WordPress", "WooCommerce", "PHP", "JavaScript", "Web Development"],
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "PK",
+              },
             }),
           }}
         />
